@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rickandmorty/models/characters_model.dart';
+import 'package:rickandmorty/models/episode_model.dart';
 import 'package:rickandmorty/views/screens/character_profile_view/character_profile_view_model.dart';
 import 'package:rickandmorty/views/widgets/appbar_widget.dart';
+import 'package:rickandmorty/views/widgets/decorated_container.dart';
 
 class CharacterProfileView extends StatefulWidget {
   final CharacterModel characterModel;
@@ -13,11 +15,11 @@ class CharacterProfileView extends StatefulWidget {
 }
 
 class _CharacterProfileViewState extends State<CharacterProfileView> {
-  @override
+   @override
   void initState() {
     super.initState();
-    //context
-    //.read<CharacterProfileView
+    context.read<CharacterProfileViewModel>().getEpisodes(widget.characterModel.episode);
+
   }
 
   @override
@@ -28,47 +30,58 @@ class _CharacterProfileViewState extends State<CharacterProfileView> {
         extendBodyBehindAppBar:
             true, //AppBar kısmına kadar Arka plan resmini doldurur.
         appBar: AppBarWidget(title: "Karakter", transparentBackground: true),
-        body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/bg-image.png"),
-              alignment: Alignment.topCenter,
-              fit: BoxFit.fitWidth,
-            ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              _characterAvatar(context),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(50),
-                    ),
-                  ),
+        body: DecoratedContainer(
+          topChild: _characterAvatar(context),
                   child: Column(
                     children: [
                       _characterName(),
                       _labelView(context),
-                      SizedBox(height: 38),
+                      SizedBox(height: 20),
                       _scenesTitle(),
-                      SizedBox(height: 15),
-                      Flexible(child: Consumer<CharacterProfileViewModel>(builder: (context, viewModel, child) {
-                        return Episo
-                      },)
-                      
-                      
-                      )
-
+                      _episodeListView()
                     ],
                   ),
-                ),
-              ),
-            ],
+          
           ),
         ),
+    );
+  }
+
+  Flexible _episodeListView() {
+    return Flexible(
+      child: Consumer<CharacterProfileViewModel>(
+        builder: (context, viewModel, child) {
+          return ListView.separated(
+            padding: EdgeInsets.zero,
+            itemCount: viewModel.episodes.length,
+            itemBuilder: (context, index) {
+              final EpisodeModel model = viewModel.episodes[index];
+              return ListTile(
+                leading: const Icon(
+                  Icons.face_retouching_natural,
+                  size: 36,
+                ),
+                trailing: const Icon(Icons.keyboard_arrow_right),
+                title: Text(
+                  model.episode,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                subtitle: Text(
+                  model.name,
+                  style: const TextStyle(fontSize: 12),
+                ),
+              );
+            },
+            separatorBuilder: (context, index) => Divider(
+              color: Theme.of(context).colorScheme.tertiary,
+              indent: 30,
+              endIndent: 30,
+              height: 0,
+            ),
+          );
+        },
       ),
     );
   }
@@ -120,7 +133,7 @@ class _CharacterProfileViewState extends State<CharacterProfileView> {
         color: Theme.of(context).colorScheme.secondary,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Text("Örnek Metin", style: TextStyle(fontSize: 12)),
+      child: Text(label, style: TextStyle(fontSize: 12)),
     );
   }
 
@@ -133,9 +146,12 @@ class _CharacterProfileViewState extends State<CharacterProfileView> {
         child: CircleAvatar(
           radius: 98,
           backgroundColor: Theme.of(context).colorScheme.surface,
-          child: CircleAvatar(
-            radius: 95,
-            backgroundImage: NetworkImage(widget.characterModel.image),
+          child: Hero( //Hero Widget ile karakter resmine tıklayınca açılan sayfada resmin animasyonlu geçişini sağladık
+            tag: widget.characterModel.image,
+            child: CircleAvatar(
+              radius: 95,
+              backgroundImage: NetworkImage(widget.characterModel.image),
+            ),
           ),
         ),
       ),

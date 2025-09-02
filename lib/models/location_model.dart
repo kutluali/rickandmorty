@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 import 'package:rickandmorty/models/info_model.dart';
 
@@ -6,7 +5,10 @@ class LocationModel {
   InfoModel info;
   final List<LocationItem> locations;
 
-  LocationModel({required this.info, required this.locations});
+  LocationModel({
+    required this.info,
+    required this.locations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

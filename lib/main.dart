@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rickandmorty/app/locator.dart';
 import 'package:rickandmorty/app/router.dart';
-import 'package:rickandmorty/views/screens/characters_view/characters_view_model.dart';
-import 'app/theme.dart';
+import 'package:rickandmorty/app/theme.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setupLocator();
+  await setupLocator();
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => CharactersViewModel()),
-        // başka ViewModel varsa onları da buraya ekle
+        ChangeNotifierProvider(create: (context) => AppTheme()),
       ],
       child: const MyApp(),
     ),
@@ -24,10 +22,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: router,
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
+    return Consumer<AppTheme>(
+      builder: (context, viewModel, child) => MaterialApp.router(
+        routerConfig: router,
+        debugShowCheckedModeBanner: false,
+        theme: viewModel.theme,
+      ),
     );
   }
 }

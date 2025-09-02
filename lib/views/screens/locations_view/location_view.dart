@@ -1,10 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rickandmorty/views/screens/locations_view/location_list_view.dart';
+import 'package:rickandmorty/views/screens/locations_view/location_view_model.dart';
+import 'package:rickandmorty/views/widgets/decorated_container.dart';
 
-class LocationView extends StatelessWidget {
+class LocationView extends StatefulWidget {
   const LocationView({super.key});
 
   @override
+  State<LocationView> createState() => _LocationViewState();
+
+}
+
+class _LocationViewState extends State<LocationView> {
+ @override
+  void initState() {
+    super.initState();
+    context.read<LocationViewModel>().getLocation();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Center(child: Text("Locatin"));
+    return SafeArea(
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        body: DecoratedContainer(
+          child:_locationListView(),
+          topChild: SizedBox(height: 74,),
+        ),
+      ),
+    );
+  }
+
+  Widget _locationListView(){
+    return Consumer<LocationViewModel>(builder: (context, viewModel, child){
+      if (viewModel.locationModel==null) {
+        return Center(
+          child: CircularProgressIndicator.adaptive(),
+        );
+      }else{
+        return LocationListView(locationModel: viewModel.locationModel!, loadMore: viewModel.loadMore, onLoadMore: viewModel.getMoreLocations,);
+      }
+
+    });
   }
 }
+ 

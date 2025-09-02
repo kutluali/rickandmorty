@@ -2,12 +2,11 @@
 import 'dart:convert';
 
 class EpisodeModel {
-  final String id;
+  final int id;
   final String name;
   final String episode;
   final List<String> characters;
   final String url;
-
   EpisodeModel({
     required this.id,
     required this.name,
@@ -27,11 +26,16 @@ class EpisodeModel {
   }
 
   factory EpisodeModel.fromMap(Map<String, dynamic> map) {
+    final episodeString = map['episode'] as String;
+    final episodeList = episodeString.replaceAll('S', '').split('E');
     return EpisodeModel(
-      id: map['id'] as String,
+      id: map['id'] as int,
       name: map['name'] as String,
-      episode: map['episode'] as String,
-      characters: List<String>.from((map['characters'] as List)),
+      episode:
+          'Sezon ${int.parse(episodeList.first)} Bölüm ${int.parse(episodeList.last)}',
+      characters: List<String>.from(
+        (map['characters'] as List),
+      ),
       url: map['url'] as String,
     );
   }

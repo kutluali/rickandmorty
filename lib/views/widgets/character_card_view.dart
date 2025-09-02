@@ -62,8 +62,7 @@ class _CharacterCardViewState extends State<CharacterCardView> {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(6),
-
-                    child: Hero(
+                    child: Hero( //Hero Widget ile karakter resmine tıklayınca açılan sayfada resmin animasyonlu geçişini sağladık
                       tag: widget.characterModel.image,
                       child: Image.network(
                         widget.characterModel.image,
