@@ -57,13 +57,18 @@ class _CharacterCardViewState extends State<CharacterCardView> {
                 color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.circular(6),
               ),
+
               child: Row(
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(6),
-                    child: Image.network(
-                      widget.characterModel.image,
-                      height: 100,
+
+                    child: Hero(
+                      tag: widget.characterModel.image,
+                      child: Image.network(
+                        widget.characterModel.image,
+                        height: 100,
+                      ),
                     ),
                   ),
                   Padding(
