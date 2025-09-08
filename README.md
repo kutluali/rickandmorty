@@ -26,14 +26,15 @@ Flutter ile geliştirdiğim, **Rick & Morty** animasyon dizisinin karakter, böl
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/c1a2b76d-3f9c-4449-814d-a8dc89729e1b" width="25%" />
-  <img src="https://github.com/user-attachments/assets/834929f6-0eab-44ab-aa1d-47057e9af4d0" width="25%" />
-  <img src="https://github.com/user-attachments/assets/7735a94b-4680-4297-9995-52a6e0eef4d7" width="25%" />
-  <img src="https://github.com/user-attachments/assets/8b1d0c74-bcb6-4f36-a448-a9066e9c8cd2" width="25%" />
+  <img src="https://github.com/user-attachments/assets/c1a2b76d-3f9c-4449-814d-a8dc89729e1b" width="30%" />
+  <img src="https://github.com/user-attachments/assets/834929f6-0eab-44ab-aa1d-47057e9af4d0" width="30%" />
+  <img src="https://github.com/user-attachments/assets/7735a94b-4680-4297-9995-52a6e0eef4d7" width="30%" />
+  <img src="https://github.com/user-attachments/assets/8b1d0c74-bcb6-4f36-a448-a9066e9c8cd2" width="30%" />
 </p>
 
 <p align="center">
-
+  
 </p>
+
 
 
