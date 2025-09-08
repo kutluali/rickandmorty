@@ -42,10 +42,8 @@ class _CharacterCardViewState extends State<CharacterCardView> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.push(
-        AppRoutes.characterProfile,
-        extra: widget.characterModel,
-      ),
+      onTap: () => context.push(AppRoutes.characterProfile,
+          extra: widget.characterModel),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 7.0),
         child: Stack(

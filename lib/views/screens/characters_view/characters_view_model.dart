@@ -3,6 +3,7 @@ import 'package:rickandmorty/app/locator.dart';
 import 'package:rickandmorty/models/characters_model.dart';
 import 'package:rickandmorty/services/api_service.dart';
 
+//Search butonu için filtre ekledik.
 enum CharacterType { all, alive, dead, unknown }
 
 class CharactersViewModel extends ChangeNotifier {
@@ -55,12 +56,15 @@ class CharactersViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  //İsim ile arama yapma
   void getCharactersByName(String name) async {
     clearCharacters();
     _charactersModel = await _apiService.getCharacters(args: {'name': name});
     notifyListeners();
   }
 
+
+  //Arama butonu Filtreleme kısmı
   void onCharacterTypeChanged(CharacterType type) async {
     characterType = type;
     clearCharacters();

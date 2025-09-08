@@ -38,6 +38,7 @@ class _LocationListViewState extends State<LocationListView> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      controller: _scrollController,
                     padding: EdgeInsets.zero,
                     itemCount: widget.locationModel.locations.length,
                     itemBuilder: (context, index){
@@ -45,7 +46,7 @@ class _LocationListViewState extends State<LocationListView> {
                       return Column(
                         children: [
                           ListTile(
-                            onTap: () => context.push(AppRoutes.residents, extra: widget.locationModel),
+                            onTap: () => context.push(AppRoutes.residents, extra: location),                            
                             leading: Icon(Icons.location_on, size: 36,),
                             title: Text(location.name, style: TextStyle(fontWeight: FontWeight.w500),),
                             subtitle: Column(
@@ -56,7 +57,10 @@ class _LocationListViewState extends State<LocationListView> {
                             ),
                             trailing: Icon(Icons.keyboard_arrow_right),
                           ),
-                        ],
+                        if (widget.loadMore &&
+                index == widget.locationModel.locations.length - 1)
+              const CircularProgressIndicator.adaptive(),
+          ],
                       );
                       
                     },

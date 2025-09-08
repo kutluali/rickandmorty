@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:rickandmorty/app/router.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -24,7 +26,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         if (!hideSettings)
-          IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
+          IconButton(onPressed: ()=>context.push(AppRoutes.settings), icon: const Icon(Icons.settings)),
       ],
     );
   }

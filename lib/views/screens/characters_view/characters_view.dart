@@ -4,6 +4,7 @@ import 'package:rickandmorty/views/screens/characters_view/characters_view_model
 import 'package:rickandmorty/views/widgets/appbar_widget.dart';
 import 'package:rickandmorty/views/widgets/character_card_listview.dart';
 
+
 class CharactersView extends StatefulWidget {
   const CharactersView({super.key});
 
@@ -42,6 +43,7 @@ class _CharactersViewState extends State<CharactersView> {
       ),
     );
   }
+// Arama Çubuğu
 
   Widget _searchInputWidget(
     BuildContext context, {

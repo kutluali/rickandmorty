@@ -51,7 +51,10 @@ class _EpisodesListViewState extends State<EpisodesListView> {
         return Column(
           children: [
             ListTile(
-              
+              onTap: () => context.push(
+                AppRoutes.sectionCharacters,
+                extra: model,
+              ),
               leading: const Icon(
                 Icons.face_retouching_natural,
                 size: 36,
