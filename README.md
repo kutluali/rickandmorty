@@ -26,29 +26,14 @@ Flutter ile geliştirdiğim, **Rick & Morty** animasyon dizisinin karakter, böl
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/c1a2b76d-3f9c-4449-814d-a8dc89729e1b" width="30%" />
-  <img src="https://github.com/user-attachments/assets/834929f6-0eab-44ab-aa1d-47057e9af4d0" width="30%" />
-  <img src="https://github.com/user-attachments/assets/7735a94b-4680-4297-9995-52a6e0eef4d7" width="30%" />
+  <img src="https://github.com/user-attachments/assets/c1a2b76d-3f9c-4449-814d-a8dc89729e1b" width="25%" />
+  <img src="https://github.com/user-attachments/assets/834929f6-0eab-44ab-aa1d-47057e9af4d0" width="25%" />
+  <img src="https://github.com/user-attachments/assets/7735a94b-4680-4297-9995-52a6e0eef4d7" width="25%" />
+  <img src="https://github.com/user-attachments/assets/8b1d0c74-bcb6-4f36-a448-a9066e9c8cd2" width="25%" />
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/8b1d0c74-bcb6-4f36-a448-a9066e9c8cd2" width="30%" />
+
 </p>
-
-
-A few resources to get you started if this is your first Flutter project:
-
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-
-
-samples, guidance on mobile development, and a full API reference.
-
-# RickAndMorty
- **Rick & Morty** evreninden karakter, bölüm ve konum bilgilerini sunan çoklu platform destekli bir uygulama.
 
 
